@@ -17,6 +17,10 @@ export class UsersService {
     user.roles = [role];
     return user;
   };
+  async getAllUsers() {
+    const users = await this.userRepository.findAll({ include: { all: true } });
+    return users;
+  }
   getUsers = async () => {
     const users = await this.userRepository.findAll({ include: { all: true } });
     return users;
